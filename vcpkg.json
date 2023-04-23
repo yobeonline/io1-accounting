@@ -1,0 +1,11 @@
+{
+  "name": "accounting",
+  "version-string": "latest",
+  "dependencies": ["io1-money", "boost-filesystem", "boost-container"],
+  "features": {
+    "tests": {
+      "description": "Unit testing",
+      "dependencies": [ "doctest" ]
+    }
+  }
+}
