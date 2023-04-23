@@ -35,9 +35,13 @@ add_library(${PROJECT_NAME} STATIC
 )
 target_include_directories(
   ${PROJECT_NAME}
-  INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
             $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_20)
+
+find_package(io1 REQUIRED COMPONENTS money)
+find_package(Boost REQUIRED COMPONENTS filesystem)
+target_link_libraries(${PROJECT_NAME} PUBLIC io1::money Boost::filesystem Boost::boost)
 
 add_library(io1::accounting ALIAS ${PROJECT_NAME})
 
