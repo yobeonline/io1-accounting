@@ -1,11 +1,8 @@
-/// \file entry.hpp
 #pragma once
-#ifndef IO1_ENTRY_HPP
-#define IO1_ENTRY_HPP
 
-#include "money.hpp"
-#include <QDate>
-#include <QString>
+#include <io1/money.hpp>
+#include <chrono>
+#include <string>
 #include <iosfwd>
 
 namespace io1
@@ -19,14 +16,14 @@ namespace io1
   {
   public:
     Entry(void) =default; /// Constructs an uninitialized entry.
-    explicit Entry(Money amount); /// Constructs an entry with the given amount, dated today.
-    explicit Entry(Money amount, QString const & description); /// Constructs an entry with the given amount and description, dated today.
-    explicit Entry(Money amount, QString const & description, QDate date); /// Constructs an entry with the given amount, description and date.
+    explicit Entry(Money amount) noexcept; /// Constructs an entry with the given amount, dated today.
+    explicit Entry(Money amount, std::string description) noexcept; /// Constructs an entry with the given amount and description, dated today.
+    explicit Entry(Money amount, std::string description, std::chrono::year_month_day date) noexcept; /// Constructs an entry with the given amount, description and date.
 
   public:
-    QDate const & date(void) const { return date_; }; /// Returns the date of the entry.
-    QString const & description(void) const { return description_; }; /// Returns the description of the entry. The returned string is trimmed.
-    Money amount(void) const { return amount_; }; /// Returns the amount of the entry.
+    [[nodiscard]] auto const & date(void) const noexcept { return date_; }; /// Returns the date of the entry.
+    [[nodiscard]] auto const & description(void) const noexcept { return description_; }; /// Returns the description of the entry. The returned string is trimmed.
+    [[nodiscard]] auto amount(void) const noexcept { return amount_; }; /// Returns the amount of the entry.
 
   public:
     std::ostream & write(std::ostream & stream) const; /// Formats the entry into a std::ostream using UTF8. It can be re-read with the read function.
@@ -35,8 +32,8 @@ namespace io1
 
   private:
     Money amount_; /// The amount of the entry.
-    QDate date_; /// the date of the entry.
-    QString description_; /// the trimmed description of the entry.
+    std::chrono::year_month_day date_; /// the date of the entry.
+    std::string description_; /// the trimmed description of the entry.
   };
 
   /// Free function to format an entry into a std::ostream.
@@ -49,4 +46,3 @@ namespace io1
   inline bool operator==(Entry const & lhs, Entry const & rhs) { return lhs.equals(rhs); };
 }
 
-#endif

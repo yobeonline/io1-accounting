@@ -1,0 +1,16 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg-configuration.schema.json",
+  "default-registry": {
+    "kind": "git",
+    "repository": "https://github.com/microsoft/vcpkg",
+    "baseline": "c8696863d371ab7f46e213d8f5ca923c4aef2a00"
+  },
+  "registries": [
+     {
+      "kind": "git",
+      "repository": "https://github.com/yobeonline/io1-vcpkg-registry",
+      "baseline": "a055fc978fbe1690804f5c866d9ec8b4454eec2b",
+      "packages": [ "io1-money" ]
+    }
+  ]
+}

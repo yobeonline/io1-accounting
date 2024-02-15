@@ -3,7 +3,7 @@
 #ifndef IO1_ARCHIVED_LISTING_HPP
 #define IO1_ARCHIVED_LISTING_HPP
 
-#include "listing.hpp"
+#include "io1/listing.hpp"
 #include <boost/optional.hpp>
 #include <boost/filesystem/path.hpp>
 

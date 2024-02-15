@@ -1,7 +1,7 @@
 {
-  "name": "accounting",
+  "name": "io1-accounting",
   "version-string": "latest",
-  "dependencies": ["io1-money", "boost-filesystem", "boost-container"],
+  "dependencies": ["io1-money"],
   "features": {
     "tests": {
       "description": "Unit testing",

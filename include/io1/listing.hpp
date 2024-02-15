@@ -7,7 +7,7 @@
 #include <boost/range/istream_range.hpp>
 #include <boost/container/flat_set.hpp>
 #include <QString>
-#include "statement.hpp"
+#include "io1/statement.hpp"
 
 namespace io1
 {

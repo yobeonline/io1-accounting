@@ -17,21 +17,21 @@ project(
 
 include(GNUInstallDirs)
 
-add_library(${PROJECT_NAME} STATIC
-		include/io1/statement.hpp
-		src/statement.cpp
+add_library(${PROJECT_NAME}
+		#include/io1/statement.hpp
+		#src/statement.cpp
 		include/io1/entry.hpp
 		src/entry.cpp
-		include/io1/listing.hpp
-		src/listing.cpp
-		include/io1/account.hpp
-		src/account.cpp
-		include/io1/archived_listing.hpp
-		src/archived_listing.cpp
-		include/io1/accounting_exception.hpp
-		src/accounting_exception.cpp
-		include/io1/date_formatter.hpp
-		src/date_formatter.cpp
+		#include/io1/listing.hpp
+		#src/listing.cpp
+		#include/io1/account.hpp
+		#src/account.cpp
+		#include/io1/archived_listing.hpp
+		#src/archived_listing.cpp
+		#include/io1/accounting_exception.hpp
+		#src/accounting_exception.cpp
+		#include/io1/date_formatter.hpp
+		#src/date_formatter.cpp
 )
 target_include_directories(
   ${PROJECT_NAME}
@@ -73,7 +73,12 @@ if(IO1_WITH_TESTS)
 
   find_package(doctest CONFIG REQUIRED)
 
-  add_executable(test_${PROJECT_NAME} test/test_listing.cpp test/test_account.cpp test/test_entry.cpp test/test_statement.cpp)
+  add_executable(test_${PROJECT_NAME}
+	#test/test_listing.cpp
+	#test/test_account.cpp
+	test/test_entry.cpp
+	#test/test_statement.cpp
+  )
   target_link_libraries(test_${PROJECT_NAME} PRIVATE io1::accounting
                                                      doctest::doctest)
 
